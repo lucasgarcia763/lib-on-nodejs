@@ -1,0 +1,23 @@
+{
+  "name": "lib-on-nodejs",
+  "version": "1.0.0",
+  "description": "LibOn Online Library",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasgarcia763/lib-on-nodejs.git"
+  },
+  "author": "Lucas Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasgarcia763/lib-on-nodejs/issues"
+  },
+  "homepage": "https://github.com/lucasgarcia763/lib-on-nodejs#readme",
+  "dependencies": {
+    "express": "4.16.3"
+  }
+}
