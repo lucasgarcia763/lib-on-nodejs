@@ -13,15 +13,6 @@ module.exports = (app) => {
     });
     
     app.get('/books', function(request, response){
-        response.send(`
-                    <html>
-                        <head>
-                            <meta charset="utf-8">
-                        </head>
-                        <body>
-                            <h1>Books List</h1>
-                        </body>
-                    </html>
-                `);
+        response.marko(require('../views/books/list/list.marko'));
     });
 }
