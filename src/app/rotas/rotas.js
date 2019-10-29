@@ -13,6 +13,21 @@ module.exports = (app) => {
     });
     
     app.get('/books', function(request, response){
-        response.marko(require('../views/books/list/list.marko'));
+        response.marko
+        (
+            require('../views/books/list/list.marko'),
+            {
+                books: [
+                    {
+                        id: 1,
+                        title: 'Fundamentos do Node'
+                    },
+                    {
+                        id: 2,
+                        title: 'Node avançado'
+                    }
+                ]
+            }
+        );
     });
 }
