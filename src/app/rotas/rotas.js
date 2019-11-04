@@ -34,6 +34,14 @@ module.exports = (app) => {
 
     app.post('/books', function(request, response){
         console.log(request.body);
+
+        const livroDao = new LivroDao(db);
+        
+        livroDao.adiciona(request.body)
+        .then(
+            // TODO
+        )
+        .catch(erro => console.log(erro));
     });
 
     app.get('/books/form', function(request, response) {
