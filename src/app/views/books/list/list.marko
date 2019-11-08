@@ -5,15 +5,22 @@
     <body>
         <h1>Books List</h1>
 
-        <table>
+        <table id="livros">
             <tr>
                 <td>ID</td>
                 <td>Title</td>
+                <td>Price</td>
+                <td>Edit</td>
+                <td>Remove</td>
             </tr>
-            <tr for (book in data.books)>
+            <tr for (book in data.books) id="livro_${book.id}">
                 <td>${book.id}</td>
                 <td>${book.titulo}</td>
+                <td>${book.preco}</td>
+                <td><a href="#">Editar</a></td>
+                <td><a href="#" data-ref="${book.id}" data-type="remocao">Remover</a></td>
             </tr>
         </table>
+        <script src="/estatico/js/remove-livro.js"></script>
     </body>
 </html>

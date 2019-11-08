@@ -45,4 +45,14 @@ module.exports = (app) => {
     app.get('/books/form', function(request, response) {
         response.marko(require('../views/form/form.marko'));
     });
+
+    app.delete('/books/:id', function(request, response) {
+        const id = request.params.id;
+
+        const livroDao = new LivroDao(db);
+
+        livroDao.remove(id)
+        .then(() => resp.status(200).end)
+        .catch(erro => console.log(erro));
+    });
 }
