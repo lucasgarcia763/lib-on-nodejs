@@ -2,13 +2,14 @@
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
-    marko_componentType = "/lib-on-nodejs$1.0.0/src/app/views/form/form.marko",
+    marko_componentType = "/lib-on-nodejs$1.0.0/src/app/views/books/form/form.marko",
     components_helpers = require("marko/src/components/helpers"),
     marko_renderer = components_helpers.r,
     marko_defineComponent = components_helpers.c,
     marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_loadTag = marko_helpers.t,
     component_globals_tag = marko_loadTag(require("marko/src/components/taglib/component-globals-tag")),
+    marko_escapeXmlAttr = marko_helpers.xa,
     init_components_tag = marko_loadTag(require("marko/src/components/taglib/init-components-tag")),
     await_reorderer_tag = marko_loadTag(require("marko/src/taglibs/async/await-reorderer-tag"));
 
@@ -19,7 +20,15 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<h1>Add new books</h1><form action=\"/books\" method=\"post\"><input type=\"hidden\" id=\"id\" name=\"id\"><div><label for=\"titulo\">Titulo:</label><input type=\"text\" id=\"titulo\" name=\"titulo\" placeholder=\"coloque o titulo\"></div><div><label for=\"preco\">Preço:</label><input type=\"text\" id=\"preco\" name=\"preco\" placeholder=\"150.25\"></div><div><label for=\"descricao\">Descrição:</label><textarea cols=\"20\" rows=\"10\" id=\"descricao\" name=\"descricao\" placeholder=\"fale sobre o livro\"></textarea></div><input type=\"submit\" value=\"Salvar\"></form>");
+  out.w("<h1>Add new books</h1><form action=\"/books\" method=\"post\"><input type=\"hidden\" id=\"id\" name=\"id\" value=\"" +
+    marko_escapeXmlAttr(data.livro.id) +
+    "\"><div><label for=\"titulo\">Titulo:</label><input type=\"text\" id=\"titulo\" name=\"titulo\" placeholder=\"coloque o titulo\" value=\"" +
+    marko_escapeXmlAttr(data.livro.titulo) +
+    "\"></div><div><label for=\"preco\">Preço:</label><input type=\"text\" id=\"preco\" name=\"preco\" placeholder=\"150.25\" value=\"" +
+    marko_escapeXmlAttr(data.livro.preco) +
+    "\"></div><div><label for=\"descricao\">Descrição:</label><textarea cols=\"20\" rows=\"10\" id=\"descricao\" name=\"descricao\" placeholder=\"fale sobre o livro\" value=\"" +
+    marko_escapeXmlAttr(data.livro.descricao) +
+    "\"></textarea></div><input type=\"submit\" value=\"Salvar\"></form>");
 
   init_components_tag({}, out);
 
@@ -36,7 +45,7 @@ marko_template._ = marko_renderer(render, {
 marko_template.Component = marko_defineComponent({}, marko_template._);
 
 marko_template.meta = {
-    id: "/lib-on-nodejs$1.0.0/src/app/views/form/form.marko",
+    id: "/lib-on-nodejs$1.0.0/src/app/views/books/form/form.marko",
     tags: [
       "marko/src/components/taglib/component-globals-tag",
       "marko/src/components/taglib/init-components-tag",
