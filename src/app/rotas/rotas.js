@@ -42,6 +42,16 @@ module.exports = (app) => {
         .catch(erro => console.log(erro));
     });
 
+    app.put('/books', function(request, response){
+        console.log(request.body);
+
+        const livroDao = new LivroDao(db);
+        
+        livroDao.atualiza(request.body)
+        .then(response.redirect('/books'))
+        .catch(erro => console.log(erro));
+    });
+
     app.get('/books/form', function(request, response) {
         response.marko(require('../views/books/form/form.marko'), { livro : {}});
     });
