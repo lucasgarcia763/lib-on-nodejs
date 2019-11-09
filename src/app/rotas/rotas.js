@@ -52,7 +52,7 @@ module.exports = (app) => {
         const livroDao = new LivroDao(db);
 
         livroDao.remove(id)
-        .then(() => resp.status(200).end)
+        .then(() => response.status(200).end())
         .catch(erro => console.log(erro));
     });
 }
